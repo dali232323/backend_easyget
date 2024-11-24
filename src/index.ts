@@ -1,7 +1,8 @@
 import express, { Request, Response } from "express";
 import { connectToDatabase } from "./data-access/mongoose";
 import driverRouter from "./controller/driver-api";
-
+import truckRouter from "./controller/truck-api";
+import mapRouter from "./controller/interactive-map-api";
 const cors = require('cors');
 const app = express();
 const PORT = 3001;
@@ -12,6 +13,8 @@ app.use(express.json());
 
 // Routen registrieren
 app.use("/driver", driverRouter);
+app.use("/truck", truckRouter);
+app.use("/map", mapRouter);
 
 // Beispielroute
 app.get("/", (req: Request, res: Response) => {
